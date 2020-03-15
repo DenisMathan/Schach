@@ -1,9 +1,8 @@
 package schach;
 
-public class Pferd implements Figur{
+import javax.swing.*;
 
-    @Override
-    public void move() {
+public class Pferd {
 
-    }
+
 }

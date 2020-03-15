@@ -6,6 +6,7 @@ import java.awt.*;
 public class Spielbrett {
     private JFrame frame;
     private Mannschaft white;
+    private Feld[][] felder;
 
 
     public Spielbrett(int breite, int hoehe){
@@ -16,19 +17,19 @@ public class Spielbrett {
         frame.setSize(breite,hoehe);
         frame.setLayout(new GridLayout(8,0));
 
-        Feld[][] felder = new Feld[8][8];
+        felder = new Feld[8][8];
         for (int i = 0; i<=7; i++){
 
             for (int n=0; n<=7; n++){
-                felder[i][n] = new Feld( i, n);
-                frame.add(felder[i][n].getMyButton());
+                felder[n][i] = new Feld( n, i);
+                frame.add(felder[n][i].getMyButton());
             }
         }
 
 
-        this.white = new Mannschaft("weiß");
+        this.white = new Mannschaft("weiß" , felder);
         for(int i = 0; i<=7; i++){
-            felder[6][i].setIcon(white.getBauer()[1].getIcon(),"bauer");
+            felder[i][6].setFigur(white.getBauer()[i]);
         }
 
 
