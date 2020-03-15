@@ -6,14 +6,13 @@ import javax.swing.*;
 
 
 public class Spielfeld {
+
     public Spielfeld(){
-
-        // 1 panel fürs schachbrett 4 fürs name|zahl
-        // JPanel[] panel1,panel2,panel3,panel4,panel5 = new JPanel[5];
-
-
-
-
+        for (int i = 8; i>=1; i--){
+            for (int n=1; n<=8; n++){
+                Feld feld = new Feld( n, i);
+            }
+        }
     }
 
 
