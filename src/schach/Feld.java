@@ -29,9 +29,6 @@ public class Feld {
         this.klick = new MyActionListener(this.ort[0], this.ort[1], this.figur);
             myButton.addActionListener(klick);
             myButton.putClientProperty("id","hassl");
-
-
-
     }
     public int[] getOrt(){
         return this.ort;
@@ -45,10 +42,12 @@ public class Feld {
         this.klick.setFigur(bauer);
         this.figur = bauer;
         this.icon= bauer.getIcon();
-
         this.myButton.setIcon(this.icon);
     }
-    public void setColor(){
+    public void deleteIcon(){
+        myButton.setIcon(null);
+    }
+    public void setActive(){
         if (this.active){
             this.active=false;
             if((this.ort[0]%2==0 && this.ort[1]%2==0)||(this.ort[0]%2==1 && this.ort[1]%2==1)){

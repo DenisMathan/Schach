@@ -6,36 +6,47 @@ import java.awt.event.ActionListener;
 
 
 public class MyActionListener implements ActionListener {
-    private int posx;
-    private int posy;
-    private static boolean active = false;
-    private Figur figur;
+    private int xpos; //position des gewählten Buttons
+    private int ypos;
+    private static boolean active = false; //wurde bereits eine figur ausgewählt oder nicht?
+    private static Figur gewaehlteFigur; //die Figur die gespeichert bleibt
+    private Figur figur = null; //die aktuelle Figur!
 
 
-    public MyActionListener(int posx, int posy, Figur figur){
-        this.posx = posx;
-        this.posy = posy;
-        this.figur= figur;
-
+    public MyActionListener(int posx, int posy, Figur figur) {
+        this.xpos = posx;
+        this.ypos = posy;
+        this.figur = figur;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(this.figur==null){
-            System.out.println("keine Figur");
+        if (active) {
+            if (this.figur == null) {
+                gewaehlteFigur.move(this.xpos, this.ypos);
+                active = false;
+                gewaehlteFigur = null;
+            } else {
+                this.figur.possibilities();
+                gewaehlteFigur = this.figur;
+            }
+        } else {
+            if (this.figur.getName().equals("bauer")) {
+                System.out.println(this.figur.getName());
+                System.out.println(xpos + " " + ypos);
+                this.figur.possibilities();
+                gewaehlteFigur = this.figur;
+                active = true;
+            }
+            else {
+                System.out.println("wtf");
+            }
         }
-        else if(this.figur.getName().equals("bauer")){
-        System.out.println(this.figur.getName());
-        System.out.println(posx +" "+posy);
-        this.figur.possibilities();
 
-        this.active = true;
-        }
     }
 
 
-    public void setFigur(Figur figur){
+    public void setFigur(Figur figur) {
         this.figur = figur;
     }
-
 }
