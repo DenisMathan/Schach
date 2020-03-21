@@ -27,13 +27,11 @@ public class MyActionListener implements ActionListener {
                     gewaehlteFigur.possibilities();
                     gewaehltesFeld = this.feld;
                     active = true;
-
             }
             else {
                 System.out.println("wtf");
             }
         } else {
-
 
             if (this.feld.getFigur() == null && this.feld.getActive()) {
                 gewaehlteFigur.hidePossibilities();
@@ -47,10 +45,7 @@ public class MyActionListener implements ActionListener {
                 gewaehlteFigur.hidePossibilities();
             }
             active = false;
-
         }
-
-
     }
 
 }

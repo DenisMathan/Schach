@@ -12,6 +12,13 @@ public class Turm implements Figur {
     private ImageIcon icon = new ImageIcon("icon.png");
     private Feld felder[][];
 
+
+    public Turm(int xpos, int ypos, Feld[][] felder){
+        this.position = new int [] {xpos, ypos};
+        this.felder = felder;
+    }
+
+
     @Override
     public void move(int xpos, int ypos) {
 

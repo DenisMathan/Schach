@@ -19,8 +19,8 @@ public class Feld {
         if((xpos%2==0 && ypos%2==0)||(xpos%2==1 && ypos%2==1)){
             myButton.setBackground(new Color (255, 216, 110));
         }
-        else{
-            myButton.setBackground(new Color(105,70,54));
+        else {
+            myButton.setBackground(new Color(105, 70, 54));
         }
 
         this.position = new int[] {xpos, ypos};
@@ -29,10 +29,12 @@ public class Feld {
         this.klick = new MyActionListener(this, this.position);
             myButton.addActionListener(klick);
     }
+
+
+
     public int[] getPosition(){
         return this.position;
     }
-
 
     public JButton getMyButton(){
         return myButton;
@@ -42,9 +44,9 @@ public class Feld {
         return figur;
     }
 
-    public void setFigur(Figur bauer){
-        this.figur = bauer;
-        this.icon= bauer.getIcon();
+    public void setFigur(Figur figur){
+        this.figur = figur;
+        this.icon= figur.getIcon();
         this.myButton.setIcon(this.icon);
     }
     public void removeFigure (){

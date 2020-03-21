@@ -19,7 +19,6 @@ public class Spielbrett {
 
         felder = new Feld[8][8];
         for (int i = 0; i<=7; i++){
-
             for (int n=0; n<=7; n++){
                 felder[n][i] = new Feld( n, i);
                 frame.add(felder[n][i].getMyButton());

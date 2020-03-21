@@ -9,6 +9,4 @@ public interface Figur {
     public ImageIcon getIcon();
     public void possibilities();
     public void hidePossibilities();
-
-
 }
