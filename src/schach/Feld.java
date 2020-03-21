@@ -1,10 +1,12 @@
 package schach;
 
+import schach.Figuren.Figur;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Feld {
-    private int [] ort ;
+    private int [] position ;
     private JButton myButton;
     ImageIcon icon = null;
     private Figur figur = null;
@@ -21,47 +23,48 @@ public class Feld {
             myButton.setBackground(new Color(105,70,54));
         }
 
-        this.ort = new int[] {xpos, ypos};
-
-
+        this.position = new int[] {xpos, ypos};
         myButton.setRolloverEnabled(false);
 
-        this.klick = new MyActionListener(this.ort[0], this.ort[1], this.figur);
+        this.klick = new MyActionListener(this, this.position);
             myButton.addActionListener(klick);
-            myButton.putClientProperty("id","hassl");
     }
-    public int[] getOrt(){
-        return this.ort;
+    public int[] getPosition(){
+        return this.position;
     }
 
 
     public JButton getMyButton(){
         return myButton;
     }
+
+    public Figur getFigur() {
+        return figur;
+    }
+
     public void setFigur(Figur bauer){
-        this.klick.setFigur(bauer);
         this.figur = bauer;
         this.icon= bauer.getIcon();
         this.myButton.setIcon(this.icon);
     }
-    public void deleteIcon(){
+    public void removeFigure (){
+        this.figur = null;
         myButton.setIcon(null);
     }
+    public boolean getActive (){
+        return this.active;
+    }
     public void setActive(){
-        if (this.active){
-            this.active=false;
-            if((this.ort[0]%2==0 && this.ort[1]%2==0)||(this.ort[0]%2==1 && this.ort[1]%2==1)){
-                myButton.setBackground(new Color (255, 216, 110));
-            }
-            else{
-                myButton.setBackground(new Color(105,70,54));
-            }
-        }
-        else{
             this.active=true;
             myButton.setBackground(Color.red);
-        }
-
     }
-
+    public void setInActive(){
+        this.active=false;
+        if((this.position[0]%2==0 && this.position[1]%2==0)||(this.position[0]%2==1 && this.position[1]%2==1)){
+            myButton.setBackground(new Color (255, 216, 110));
+        }
+        else{
+            myButton.setBackground(new Color(105,70,54));
+        }
+    }
 }

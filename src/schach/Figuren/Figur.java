@@ -1,12 +1,14 @@
-package schach;
+package schach.Figuren;
+
+import schach.Feld;
 
 import javax.swing.*;
 
 public interface Figur {
     public void move(int xpos, int ypos );
     public ImageIcon getIcon();
-    public String getName();
     public void possibilities();
-    public Feld[][] getFelder();
+    public void hidePossibilities();
+
 
 }

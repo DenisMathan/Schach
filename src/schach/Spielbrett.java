@@ -28,9 +28,7 @@ public class Spielbrett {
 
 
         this.white = new Mannschaft("weiß" , felder);
-        for(int i = 0; i<=7; i++){
-            felder[i][6].setFigur(white.getBauer()[i]);
-        }
+
 
 
 
