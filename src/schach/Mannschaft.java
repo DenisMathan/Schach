@@ -3,6 +3,7 @@ package schach;
 import schach.Figuren.Bauer;
 import schach.Figuren.Figur;
 import schach.Figuren.Pferd;
+import schach.Figuren.King;
 
 import javax.swing.*;
 
@@ -13,8 +14,8 @@ public class Mannschaft {
    /* private Pferd[] pferd = new Pferd[2];
     private Turm[] turm = new Turm[2];
     private Laeufer[] laeufer = new Laeufer[2];
-    private Dame    dame = new Dame;
-    private King king = new King,*/
+    private Dame    dame = new Dame;*/
+    private King[] king = new King[1];
     private ImageIcon icon = new ImageIcon("icon.png");
     private Feld[][] felder;
 
