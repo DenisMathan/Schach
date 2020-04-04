@@ -5,7 +5,7 @@ import schach.Figuren.*;
 import javax.swing.*;
 
 public class Mannschaft {
-    private Figur[] figur = new Figur[14];
+    private Figur[] figur = new Figur[15];
 
 
 
@@ -20,6 +20,7 @@ public class Mannschaft {
         this.figur[11] = new Pferd(6, 7, felder);
         this.figur[12] = new Laeufer(2, 7, felder);
         this.figur[13] = new Laeufer(5, 7, felder);
+        this.figur[14] = new Dame (3,7, felder);
 
         for(int i = 0; i<=7; i++){
             felder[i][6].setFigur(this.figur[i]);
@@ -31,6 +32,7 @@ public class Mannschaft {
         felder[6][7].setFigur(this.figur[11]);
         felder[2][7].setFigur(this.figur[12]);
         felder[5][7].setFigur(this.figur[13]);
+        felder[3][7].setFigur(this.figur[14]);
     }
 
 }

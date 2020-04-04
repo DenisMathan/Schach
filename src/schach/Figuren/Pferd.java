@@ -19,7 +19,6 @@ public class Pferd implements Figur{
     public void move(int xpos, int ypos) {
         this.position=new int[]{xpos,ypos};
         felder[xpos][ypos].setFigur(this);
-
     }
 
     @Override
