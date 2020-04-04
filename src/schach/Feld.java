@@ -45,9 +45,14 @@ public class Feld {
     }
 
     public void setFigur(Figur figur){
+        if(figur!=null){
         this.figur = figur;
         this.icon= figur.getIcon();
-        this.myButton.setIcon(this.icon);
+        this.myButton.setIcon(this.icon);}
+        else{
+            this.figur = null;
+            this.myButton.setIcon(null);
+        }
     }
     public void removeFigure (){
         this.figur = null;
