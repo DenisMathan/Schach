@@ -1,11 +1,12 @@
 package schach;
 
+import schach.Mannschaft.Team;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Spielbrett {
     private JFrame frame;
-    private Mannschaft white;
     private Feld[][] felder;
 
 
@@ -24,7 +25,8 @@ public class Spielbrett {
                 frame.add(felder[n][i].getMyButton());
             }
         }
-        this.white = new Mannschaft("weiß" , felder);
+        Team myTeam = new Team("myTeam", felder);
+        Team oponent = new Team("oponent", felder);
         frame.setVisible(true);
         //frame.add(feld);
     }

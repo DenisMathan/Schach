@@ -9,10 +9,12 @@ public class Pferd implements Figur{
     private int [][] possibilities;
     private ImageIcon icon = new ImageIcon("icon.png");
     private Feld felder[][];
+    private String team;
 
-    public Pferd(int xpos, int ypos, Feld[][] felder){
+    public Pferd(int xpos, int ypos, Feld[][] felder, String team){
         this.position = new int[]{ xpos, ypos };
         this.felder = felder;
+        this.team = team;
     }
 
     @Override
@@ -24,6 +26,11 @@ public class Pferd implements Figur{
     @Override
     public ImageIcon getIcon() {
         return this.icon;
+    }
+
+    @Override
+    public String getTeam() {
+        return this.team;
     }
 
     @Override

@@ -10,10 +10,12 @@ public class Dame implements Figur {
     private int[][] possibilities = new int[56][2];
     private ImageIcon icon = new ImageIcon("icon.png");
     private Feld felder[][];
+    private String team;
 
-    public Dame(int xpos, int ypos, Feld[][] felder) {
+    public Dame(int xpos, int ypos, Feld[][] felder, String team) {
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
+        this.team = team;
 
     }
 
@@ -26,6 +28,11 @@ public class Dame implements Figur {
     @Override
     public ImageIcon getIcon() {
         return this.icon;
+    }
+
+    @Override
+    public String getTeam() {
+        return this.team;
     }
 
     @Override

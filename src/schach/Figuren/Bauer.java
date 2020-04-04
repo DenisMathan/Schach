@@ -6,15 +6,26 @@ import schach.Figuren.*;
 import javax.swing.*;
 
 public class Bauer implements Figur {
+    //allgemein
     private int position[];
-    private int[][] possibilities = new int[4][2];
     private boolean moved = false;
-    private ImageIcon icon = new ImageIcon("icon.png");
     private Feld felder[][];
+    //wichtig für die mannschaft
+    private String team;
+    private int[][] possibilities = new int[4][2];
+    private ImageIcon icon = new ImageIcon("icon.png");
+    private int target;
 
-    public Bauer(int xpos, int ypos, Feld[][] felder) {
+    public Bauer(int xpos, int ypos, Feld[][] felder, String team) {
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
+        this.team = team;
+        if (team.equals("myTeam")) {
+            this.target = 0;
+        }
+        else{
+            this.target = 7;
+        }
     }
 
     @Override
@@ -22,6 +33,7 @@ public class Bauer implements Figur {
         this.moved = true;
         this.position = new int[]{xpos, ypos};
         felder[xpos][ypos].setFigur(this);
+
         if(ypos == 0){
             this.position = new int[]{xpos, ypos};
             felder[xpos][ypos].setFigur(this);
@@ -38,13 +50,27 @@ public class Bauer implements Figur {
     }
 
     @Override
+    public String getTeam() {
+        return this.team;
+    }
+
+    @Override
     public void possibilities() {
+        if (this.team == "myTeam"){
         possibilities = new int[][]{
                 {this.position[0], this.position[1] - 1},
                 {this.position[0], this.position[1] - 2},
                 {this.position[0] - 1, this.position[1] + 1},
                 {this.position[0] + 1, this.position[1] + 1}
         };
+        }else{
+            possibilities = new int[][]{
+                    {this.position[0], this.position[1] + 1},
+                    {this.position[0], this.position[1] + 2},
+                    {this.position[0] - 1, this.position[1] + 1},
+                    {this.position[0] + 1, this.position[1] + 1}
+            };
+        }
 
         for (int i = 0; i <= 3; i++) {
             if (possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7) {
@@ -72,8 +98,8 @@ public class Bauer implements Figur {
 
     public void transform(int xpos, int ypos){
         System.out.println("juhu ich bin dämlich");
-        Figur Dame = new Dame(this.position[0],this.position[1], this.felder);
-        this.felder[xpos][ypos].setFigur(Dame);
+        Figur dame = new Dame(this.position[0],this.position[1], this.felder, this.team);
+        this.felder[xpos][ypos].setFigur(dame);
     }
 
 }

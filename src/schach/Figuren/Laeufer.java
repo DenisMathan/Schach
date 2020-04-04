@@ -10,10 +10,12 @@ public class Laeufer implements Figur {
     private int[][] possibilities = new int[28][2];
     private ImageIcon icon = new ImageIcon("icon.png");
     private Feld felder[][];
+    private String team;
 
-    public Laeufer(int xpos, int ypos, Feld[][] felder) {
+    public Laeufer(int xpos, int ypos, Feld[][] felder, String team) {
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
+        this.team = team;
     }
     @Override
     public void move(int xpos, int ypos) {
@@ -24,6 +26,11 @@ public class Laeufer implements Figur {
     @Override
     public ImageIcon getIcon() {
         return this.icon;
+    }
+
+    @Override
+    public String getTeam() {
+        return this.team;
     }
 
     @Override
