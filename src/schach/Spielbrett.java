@@ -24,14 +24,7 @@ public class Spielbrett {
                 frame.add(felder[n][i].getMyButton());
             }
         }
-
-
         this.white = new Mannschaft("weiß" , felder);
-
-
-
-
-
         frame.setVisible(true);
         //frame.add(feld);
     }

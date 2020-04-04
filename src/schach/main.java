@@ -9,11 +9,5 @@ public class main {
         hoehe = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
         Spielbrett myGUI = new Spielbrett(500,500);
-
-
-
-
-
-
     }
 }
