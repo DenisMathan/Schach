@@ -67,6 +67,10 @@ public class Laeufer implements Figur {
                     if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
                     }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=6;
+                    }
                     else{
                         i = 6;
                     }
@@ -74,6 +78,10 @@ public class Laeufer implements Figur {
                 else if(i>6 && i<=13){
                     if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=13;
                     }
                     else{
                         i = 13;
@@ -83,12 +91,20 @@ public class Laeufer implements Figur {
                     if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
                     }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=20;
+                    }
                     else{
                         i = 20;
                     }
                 }else{
                     if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=30;
                     }
                     else{
                         i = 30;
@@ -103,10 +119,16 @@ public class Laeufer implements Figur {
     public void hidePossibilities() {
         for (int i = 0; i<=27; i++){
             if(possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7 ){
-                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null){
+                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null ||
+                        !this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur().getTeam().equals(this.team)){
                     this.felder[possibilities[i][0]] [possibilities[i][1]].setInActive();}
             }
 
         }
+    }
+
+    @Override
+    public void die(){
+        this.felder[this.position[0]][this.position[1]].setFigur(null);
     }
 }

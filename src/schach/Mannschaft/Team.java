@@ -10,6 +10,7 @@ public class Team {
 
 
 
+
     public Team(String team, Feld[][] felder){
         if(team.equals("myTeam")){
             this.row1= 7;

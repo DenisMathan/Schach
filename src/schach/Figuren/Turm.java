@@ -69,6 +69,7 @@ public class Turm implements Figur {
         for (int i = 0; i <= 27; i++) {
             //Abfage ob sich possibility auf dem Spielfeld befindet
             if (possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7) {
+                    //Weg nach oben
                     if(i<=6){
                         // abfrage ob sich Figur auf possibility befindet
                         //wenn ja soll er gleich alle weiteren possibilities auf dieser Linie überspringen
@@ -84,24 +85,40 @@ public class Turm implements Figur {
                             i = 6;
                         }
                     }
+                    //Weg nach unten
                     else if(i>6 && i<=13){
                         if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                             this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        }
+                        else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                            this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                            i=13;
                         }
                         else{
                             i = 13;
                         }
                     }
+                    //Weg nach links
                     else if(i>13 && i<=20) {
                         if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                             this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
                         }
+                        else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                            this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                            i=20;
+                        }
                         else{
                             i = 20;
                         }
-                    }else{
+                    }
+                    //Weg nach rechts
+                    else{
                         if(this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null){
                             this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        }
+                        else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                            this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                            i=30;
                         }
                         else{
                             i = 30;
@@ -124,5 +141,10 @@ public class Turm implements Figur {
             }
 
         }
+    }
+
+    @Override
+    public void die(){
+        this.felder[this.position[0]][this.position[1]].setFigur(null);
     }
 }

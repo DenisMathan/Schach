@@ -38,7 +38,7 @@ public class Bauer implements Figur {
             this.position = new int[]{xpos, ypos};
             felder[xpos][ypos].setFigur(this);
             System.out.println("you got it!");
-            die(xpos, ypos);
+            die();
             transform(xpos,ypos);
         }
 
@@ -60,10 +60,11 @@ public class Bauer implements Figur {
         possibilities = new int[][]{
                 {this.position[0], this.position[1] - 1},
                 {this.position[0], this.position[1] - 2},
-                {this.position[0] - 1, this.position[1] + 1},
-                {this.position[0] + 1, this.position[1] + 1}
+                {this.position[0] - 1, this.position[1] - 1},
+                {this.position[0] + 1, this.position[1] - 1}
         };
-        }else{
+        }
+        else{
             possibilities = new int[][]{
                     {this.position[0], this.position[1] + 1},
                     {this.position[0], this.position[1] + 2},
@@ -74,9 +75,17 @@ public class Bauer implements Figur {
 
         for (int i = 0; i <= 3; i++) {
             if (possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7) {
+                if (this.felder[possibilities[0][0]][possibilities[0][1]].getFigur()==null) {
                 this.felder[possibilities[0][0]][possibilities[0][1]].setActive();
-                if (!this.moved) {
+                }
+                if (!this.moved && this.felder[possibilities[1][0]][possibilities[1][1]].getFigur()==null) {
                     this.felder[possibilities[1][0]][possibilities[1][1]].setActive();
+                }
+                if (this.felder[possibilities[2][0]][possibilities[2][1]].getFigur()!= null && !this.felder[possibilities[2][0]][possibilities[2][1]].getFigur().getTeam().equals(this.team)) {
+                    this.felder[possibilities[2][0]][possibilities[2][1]].setActive();
+                }
+                if (this.felder[possibilities[3][0]][possibilities[3][1]].getFigur()!= null && !this.felder[possibilities[3][0]][possibilities[3][1]].getFigur().getTeam().equals(this.team)) {
+                    this.felder[possibilities[3][0]][possibilities[3][1]].setActive();
                 }
             }
         }
@@ -85,15 +94,16 @@ public class Bauer implements Figur {
     public void hidePossibilities() {
         for (int i = 0; i<=3; i++) {
             if (possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7) {
-                if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
+                if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null || !this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)) {
                     this.felder[possibilities[i][0]][possibilities[i][1]].setInActive();
                 }
             }
         }
     }
-    public void die(int xpos, int ypos){
-        System.out.println(xpos+""+ypos);
-        this.felder[xpos][ypos].setFigur(null);
+
+    @Override
+    public void die(){
+        this.felder[this.position[0]][this.position[1]].setFigur(null);
     }
 
     public void transform(int xpos, int ypos){

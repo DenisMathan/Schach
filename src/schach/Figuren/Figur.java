@@ -10,4 +10,5 @@ public interface Figur  {
     public String getTeam();
     public void possibilities();
     public void hidePossibilities();
+    public void die();
 }

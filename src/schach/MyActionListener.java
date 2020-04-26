@@ -40,7 +40,16 @@ public class MyActionListener implements ActionListener {
                 gewaehltesFeld.removeFigure();
                 gewaehltesFeld = null;
 
-            } else {
+            }
+            else if(this.feld.getFigur().getTeam() != gewaehlteFigur.getTeam() && this.feld.getActive()){
+                this.feld.getFigur().die();
+                gewaehlteFigur.hidePossibilities();
+                gewaehlteFigur.move(this.position[0], this.position[1]);
+                gewaehlteFigur= null;
+                gewaehltesFeld.removeFigure();
+                gewaehltesFeld = null;
+            }
+            else {
                 System.out.println("dieser Zug ist nicht möglich!");
                 gewaehlteFigur.hidePossibilities();
             }

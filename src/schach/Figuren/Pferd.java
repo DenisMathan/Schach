@@ -43,7 +43,7 @@ public class Pferd implements Figur{
         };
         for (int i = 0; i<=7; i++){
             if(possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7 ){
-                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null){
+                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null || !this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur().getTeam().equals(this.team)){
                 this.felder[possibilities[i][0]] [possibilities[i][1]].setActive();}
             }
         }
@@ -52,12 +52,17 @@ public class Pferd implements Figur{
     @Override
     public void hidePossibilities() {
         for (int i = 0; i<=7; i++){
-            System.out.println(possibilities[i][0] +" "+ possibilities[i][0]);
             if(possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7 ){
-                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null){
+                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null ||
+                        !this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur().getTeam().equals(this.team)){
                     this.felder[possibilities[i][0]] [possibilities[i][1]].setInActive();}
             }
 
         }
+    }
+
+    @Override
+    public void die(){
+        this.felder[this.position[0]][this.position[1]].setFigur(null);
     }
 }

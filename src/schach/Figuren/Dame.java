@@ -82,49 +82,89 @@ public class Dame implements Figur {
                     // -> bricht die rote Linie bei treffen auf figur ab
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=6;
+                    }
+                    else {
                         i = 6;
                     }
                 } else if (i > 6 && i <= 13) {
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=13;
+                    }
+                    else {
                         i = 13;
                     }
                 } else if (i > 13 && i <= 20) {
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=20;
+                    }
+                    else {
                         i = 20;
                     }
                 } else if (i > 20 && i <= 27) {
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=27;
+                    }
+                    else {
                         i = 27;
                     }
                 } else if (i > 27 && i <= 34) {
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=34;
+                    }
+                    else {
                         i = 34;
                     }
                 } else if (i > 34 && i <= 41) {
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=41;
+                    }
+                    else {
                         i = 41;
                     }
                 }else if(i>41 && i<=48) {
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=48;
+                    }
+                    else {
                         i = 48;
                     }
                 }else{
                     if (this.felder[possibilities[i][0]][possibilities[i][1]].getFigur() == null) {
                         this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
-                    } else {
+                    }
+                    else if(!this.felder[possibilities[i][0]][possibilities[i][1]].getFigur().getTeam().equals(this.team)){
+                        this.felder[possibilities[i][0]][possibilities[i][1]].setActive();
+                        i=56;
+                    }
+                    else {
                         i = 56;
                     }
                 }
@@ -136,10 +176,16 @@ public class Dame implements Figur {
     public void hidePossibilities() {
         for (int i = 0; i<=55; i++){
             if(possibilities[i][0] >= 0 && possibilities[i][0] <= 7 && possibilities[i][1] >= 0 && possibilities[i][1] <= 7 ){
-                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null){
+                if(this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur() == null ||
+                        !this.felder[possibilities[i][0]] [possibilities[i][1]].getFigur().getTeam().equals(this.team)){
                     this.felder[possibilities[i][0]] [possibilities[i][1]].setInActive();}
             }
 
         }
+    }
+
+    @Override
+    public void die(){
+        this.felder[this.position[0]][this.position[1]].setFigur(null);
     }
 }
