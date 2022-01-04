@@ -7,11 +7,12 @@ import javax.swing.*;
 public class Pferd implements Figur{
     private int position[];
     private int [][] possibilities;
-    private ImageIcon icon = new ImageIcon("icon.png");
+    private ImageIcon icon;
     private Feld felder[][];
     private String team;
 
-    public Pferd(int xpos, int ypos, Feld[][] felder, String team){
+    public Pferd(int xpos, int ypos, Feld[][] felder, String team, String color){
+        this.icon = new ImageIcon("figureIcons/"+color+"/knight.png");
         this.position = new int[]{ xpos, ypos };
         this.felder = felder;
         this.team = team;

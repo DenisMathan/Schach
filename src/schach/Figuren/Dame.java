@@ -8,11 +8,12 @@ public class Dame implements Figur {
     private int position[];
     private boolean moved = false;
     private int[][] possibilities = new int[56][2];
-    private ImageIcon icon = new ImageIcon("icon.png");
+    private ImageIcon icon;
     private Feld felder[][];
     private String team;
 
-    public Dame(int xpos, int ypos, Feld[][] felder, String team) {
+    public Dame(int xpos, int ypos, Feld[][] felder, String team, String color) {
+        this.icon = new ImageIcon("figureIcons/"+color+"/queen.png");
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
         this.team = team;

@@ -8,6 +8,6 @@ public class main {
         breite = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         hoehe = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
-        Spielbrett myGUI = new Spielbrett(500,500);
+        Spielbrett myGUI = new Spielbrett(800,800);
     }
 }

@@ -8,11 +8,12 @@ public class Laeufer implements Figur {
     private int position[];
     private boolean moved = false;
     private int[][] possibilities = new int[28][2];
-    private ImageIcon icon = new ImageIcon("icon.png");
+    private ImageIcon icon;
     private Feld felder[][];
     private String team;
 
-    public Laeufer(int xpos, int ypos, Feld[][] felder, String team) {
+    public Laeufer(int xpos, int ypos, Feld[][] felder, String team, String color) {
+        this.icon = new ImageIcon("figureIcons/"+color+"/bishop.png");
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
         this.team = team;

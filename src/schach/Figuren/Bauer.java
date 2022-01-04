@@ -13,10 +13,14 @@ public class Bauer implements Figur {
     //wichtig für die mannschaft
     private String team;
     private int[][] possibilities = new int[4][2];
-    private ImageIcon icon = new ImageIcon("icon.png");
+    private ImageIcon icon;
     private int target;
+    private String color;
 
-    public Bauer(int xpos, int ypos, Feld[][] felder, String team) {
+    public Bauer(int xpos, int ypos, Feld[][] felder, String team, String color) {
+        System.out.println(team);
+        this.color = color;
+        this.icon = new ImageIcon("figureIcons/"+color+"/pawn.png");
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
         this.team = team;
@@ -108,7 +112,7 @@ public class Bauer implements Figur {
 
     public void transform(int xpos, int ypos){
         System.out.println("juhu ich bin dämlich");
-        Figur dame = new Dame(this.position[0],this.position[1], this.felder, this.team);
+        Figur dame = new Dame(this.position[0],this.position[1], this.felder, this.team, this.color);
         this.felder[xpos][ypos].setFigur(dame);
     }
 

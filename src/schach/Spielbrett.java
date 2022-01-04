@@ -25,8 +25,8 @@ public class Spielbrett {
                 frame.add(felder[n][i].getMyButton());
             }
         }
-        Team myTeam = new Team("myTeam", felder);
-        Team oponent = new Team("oponent", felder);
+        Team myTeam = new Team("myTeam", felder, "white");
+        Team oponent = new Team("oponent", felder, "black");
         frame.setVisible(true);
         //frame.add(feld);
     }

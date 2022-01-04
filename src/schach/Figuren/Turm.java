@@ -14,9 +14,10 @@ public class Turm implements Figur {
 
 
 
-    private ImageIcon icon = new ImageIcon("icon.png");
+    private ImageIcon icon;
 
-    public Turm(int xpos, int ypos, Feld[][] felder, String team) {
+    public Turm(int xpos, int ypos, Feld[][] felder, String team, String color) {
+        this.icon = new ImageIcon("figureIcons/"+color+"/rook.png");
         this.position = new int[]{xpos, ypos};
         this.felder = felder;
         this.team = team;
